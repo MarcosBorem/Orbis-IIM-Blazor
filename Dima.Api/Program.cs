@@ -27,6 +27,7 @@ builder.Services.AddSwaggerGen(x =>
 });
 // Nova instância para cada requisição (transient) e o descarta após usar
 builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
+builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
 var app = builder.Build();
 
 // Utiliza o swagger
