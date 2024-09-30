@@ -1,4 +1,7 @@
 using Dima.Api.Data;
+using Dima.Api.Endpoints;
+using Dima.Api.Handlers;
+using Dima.Core.Handlers;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +25,8 @@ builder.Services.AddSwaggerGen(x =>
 {
     x.CustomSchemaIds(n => n.FullName);
 });
-
+// Nova instância para cada requisição (transient) e o descarta após usar
+builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
 var app = builder.Build();
 
 // Utiliza o swagger
@@ -30,6 +34,5 @@ app.UseSwagger();
 //Gera a tela
 app.UseSwaggerUI();
 
-app.MapGet("/", () => "Hello World!");
-
+app.MapEndpoints();
 app.Run();
