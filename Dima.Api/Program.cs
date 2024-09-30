@@ -1,39 +1,24 @@
-using Dima.Api.Data;
+using Dima.Api;
+using Dima.Api.Common.Api;
 using Dima.Api.Endpoints;
-using Dima.Api.Handlers;
-using Dima.Core.Handlers;
-using Microsoft.EntityFrameworkCore;
+using Dima.Core;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddConfiguration();
+builder.AddSecurity();
+builder.AddDataContexts();
+builder.AddCrossOrigin();
+builder.AddDocumentation();
+builder.AddServices();
 
-
-var cnnStr = builder
-    .Configuration
-    .GetConnectionString("DefaultConnection") ?? string.Empty;
-
-builder.Services.AddDbContext<AppDbContext>(
-    options =>
-    {
-        options.UseSqlServer(cnnStr);
-    });
-    
-//ADICIONA SUPORTE PARA O OPEN API
-builder.Services.AddEndpointsApiExplorer();
-
-//ADICIONA INTERFACE DE DOCUMENTAÇÃO DO SWAGGER
-builder.Services.AddSwaggerGen(x =>
-{
-    x.CustomSchemaIds(n => n.FullName);
-});
-// Nova instância para cada requisição (transient) e o descarta após usar
-builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
-builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
 var app = builder.Build();
 
-// Utiliza o swagger
-app.UseSwagger();
-//Gera a tela
-app.UseSwaggerUI();
+if (app.Environment.IsDevelopment())
+    app.ConfigureDevEnvironment();
 
+app.UseCors(ApiConfiguration.CorsPolicyName);
+app.UseSecurity();
 app.MapEndpoints();
+
 app.Run();
