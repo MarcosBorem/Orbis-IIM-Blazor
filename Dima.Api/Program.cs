@@ -1,8 +1,6 @@
 using Dima.Api;
 using Dima.Api.Common.Api;
 using Dima.Api.Endpoints;
-using Dima.Core;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddConfiguration();

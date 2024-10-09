@@ -1,0 +1,60 @@
+﻿@page "/login"
+@layout HeadlessLayout
+
+<PageTitle>Dima - Entrar</PageTitle>
+
+<MudGrid Justify="Justify.Center">
+    <MudItem Class="body">
+        <MudPaper Class="login-container">
+            <div class="d-flex justify-center pb-8 pt-8">
+                <img src="imgs/rec.png"
+                     alt="Dima - Controle Financeiro"
+                     width="150" />
+            </div>
+            <MudForm @ref="_mudForm">
+                <MudTextField T="string"
+                              Label="Login"
+                              InputType="InputType.Text"
+                              Required="true"
+                              RequiredError="Campo obrigatório."
+                              Immediate="true"
+                              @bind-Value="login"
+                              Style="border-radius: 0px; padding: 5px; background-color:white; margin-bottom: 20px;"/>
+
+                <MudTextField T="string"
+                              Label="Senha"
+                              InputType="InputType.Password"
+                              Required="true"
+                              RequiredError="Campo obrigatório."
+                              Immediate="true"
+                              @bind-Value="senha"
+                              Style="border-radius: 0px; padding: 5px; background-color:white; margin-bottom: 20px;"/>
+            </MudForm>
+
+            <div class="d-flex justify-center pb-8 pt-8">
+                <MudButton Variant="Variant.Filled" Class="login-button" Disabled="@(!CanSubmit)" OnClick="SubmitForm">Acessar</MudButton>
+            </div>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
+@code {
+
+    MudForm? _mudForm;
+    private string login = string.Empty;
+    private string senha = string.Empty;
+
+    // Propriedade que verifica se ambos os campos estão preenchidos
+    private bool CanSubmit => !string.IsNullOrWhiteSpace(login) && !string.IsNullOrWhiteSpace(senha);
+
+    // Função que será chamada quando o botão "Acessar" ou "Enter" forem acionados
+    private void SubmitForm()
+    {
+        if (CanSubmit)
+        {
+            // Lógica para enviar o formulário ou fazer login
+            Console.WriteLine("Formulário enviado com sucesso!");
+        }
+    }
+
+}
