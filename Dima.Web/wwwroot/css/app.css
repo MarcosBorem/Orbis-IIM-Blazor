@@ -60,6 +60,12 @@
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
-.custom-gradient-background {
+.background-gradient {
+    /* Define o gradiente linear nas cores desejadas */
     background: linear-gradient(to left, #3b3b3b 0%, #a5a5a5 100%);
+    /* Configura o fundo para cobrir a tela inteira */
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
 }
