@@ -1,12 +1,17 @@
 @inherits LayoutComponentBase
 
-<MudThemeProvider/> @*base em temas*@
-<MudSnackbarProvider/>
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="Configuration.Theme" /> @*base em temas*@
+<MudSnackbarProvider />
 
 <MudLayout>
+    <MudSwitch @bind-Value="@_isDarkMode" />
     <MudMainContent>
-        <MudContainer> @*largura máxima*@
+        <MudContainer>
+            @*largura máxima*@
             @Body
         </MudContainer>
     </MudMainContent>
 </MudLayout>
+@code {
+    private bool _isDarkMode = true;
+}

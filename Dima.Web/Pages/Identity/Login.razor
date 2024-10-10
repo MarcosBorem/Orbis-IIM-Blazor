@@ -4,10 +4,10 @@
 <PageTitle>Dima - Entrar</PageTitle>
 
 <MudGrid Justify="Justify.Center">
-    <MudItem Class="body">
-        <MudPaper Class="login-container">
+    <MudItem >
+        <MudPaper Class="mud-width-full pa-8" Style="width: auto; height: auto; border-radius: 15px;">
             <div class="d-flex justify-center pb-8 pt-8">
-                <img src="imgs/rec.png"
+                <img src="imgs/orbis.png"
                      alt="Dima - Controle Financeiro"
                      width="150" />
             </div>
@@ -19,7 +19,7 @@
                               RequiredError="Campo obrigatório."
                               Immediate="true"
                               @bind-Value="login"
-                              Style="border-radius: 0px; padding: 5px; background-color:white; margin-bottom: 20px;"/>
+                              Style="border-radius: 0px; padding: 5px; margin-bottom: 20px;"/>
 
                 <MudTextField T="string"
                               Label="Senha"
@@ -28,11 +28,11 @@
                               RequiredError="Campo obrigatório."
                               Immediate="true"
                               @bind-Value="senha"
-                              Style="border-radius: 0px; padding: 5px; background-color:white; margin-bottom: 20px;"/>
+                              Style="border-radius: 0px; padding: 5px; margin-bottom: 20px;"/>
             </MudForm>
 
             <div class="d-flex justify-center pb-8 pt-8">
-                <MudButton Variant="Variant.Filled" Class="login-button" Disabled="@(!CanSubmit)" OnClick="SubmitForm">Acessar</MudButton>
+                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Disabled="@(!CanSubmit)" Color="Color.Primary">Acessar</MudButton>
             </div>
         </MudPaper>
     </MudItem>
@@ -56,5 +56,4 @@
             Console.WriteLine("Formulário enviado com sucesso!");
         }
     }
-
 }
