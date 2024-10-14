@@ -1,21 +1,157 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="Configuration.Theme" /> @*base em temas*@
+<MudThemeProvider @ref="_mudThemeProvider"
+                  @bind-IsDarkMode="_isDarkMode"
+                  Theme="Configuration.Theme" />
 <MudSnackbarProvider />
+<MudDialogProvider />
 
-<MudLayout>
+<AuthorizeView>
+    <Authorized>
+        <MudLayout>
+            <MudAppBar>
+                <!-- Botão para abrir o menu lateral -->
+                <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                               Color="Color.Inherit"
+                               Edge="Edge.Start"
+                               OnClick="ToggleMenuDrawer" />
+                <!-- Logo -->
+                <img src="imgs/orbis.png"
+                     alt="Dima - Controle Financeiro"
+                     width="100" />
 
-    <MudSpacer />
-    <MudSwitch @bind-Value="@_isDarkMode" />
+                <MudSpacer />
 
-    <MudMainContent>
-        <MudContainer>
-            @*largura máxima*@
-            @Body
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+                <!-- Campo de pesquisa -->
+                <MudGrid Justify="Justify.Center">
+                    <MudItem xs="12" md="9">
+                        <MudTextField @bind-Value="@_searchTerm"
+                                      Placeholder="Pesquise"
+                                      FullWidth="true"
+                                      Adornment="Adornment.End"
+                                      AdornmentIcon="@Icons.Material.Filled.Search"
+                                      IconSize="Size.Large" />
+                    </MudItem>
+                </MudGrid>
+
+                <!-- Saudação ao usuário -->
+                <MudText Typo="Typo.caption" Class="ml-2">
+                    <span>Bem vindo, <b>@context.User.Identity?.Name</b></span>
+                </MudText>
+
+                <!-- Switch para alternar o tema (dark/light) -->
+                <MudSwitch Color="Color.Inherit"
+                           @bind-Value="@_isDarkMode"
+                           T="bool"
+                           Class="ml-2"
+                           ThumbIcon="@Icons.TwoTone.Lightbulb" />
+
+                <!-- Ícone do usuário para abrir o drawer de informações -->
+                <MudIconButton Icon="@Icons.Material.Filled.AccountCircle"
+                               Color="Color.Inherit"
+                               OnClick="ToggleUserDrawer"
+                               Size="Size.Large" />
+            </MudAppBar>
+
+            <!-- Drawer para o menu de navegação -->
+            <MudDrawer @bind-Open="_isMenuDrawerOpened"
+                       ClipMode="_clipModeMenu"
+                       Breakpoint="@_breakpoint"
+                       Elevation="1"
+                       Variant="DrawerVariant.Mini"
+                       Color="Color.Inherit">
+                <MudNavMenu Color="Color.Inherit">
+                    <MudFab Color="Color.Inherit"
+                            StartIcon="@Icons.Material.Filled.Add"
+                            Size="Size.Medium" />
+                    <MudNavLink Match="NavLinkMatch.All"
+                                Icon="@Icons.Material.Filled.Article">Acervo</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.All"
+                                Icon="@Icons.Material.Filled.AdminPanelSettings">Configurações</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.All"
+                                Icon="@Icons.Material.Filled.ManageAccounts">Workflow</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.All"
+                                Icon="@Icons.Material.Filled.History">Relatórios</MudNavLink>
+                </MudNavMenu>
+            </MudDrawer>
+
+            <!-- Drawer para exibir as informações do usuário -->
+            <MudDrawer @bind-Open="_isUserDrawerOpened"
+                       Anchor="Anchor.End"
+                       Elevation="1"
+                       ClipMode="_clipModeMenu"
+                       Variant="DrawerVariant.Responsive"
+                       Color="Color.Inherit">
+                <MudDrawerHeader>
+                    <MudText Typo="Typo.subtitle2">
+                        <b>Central de Notificações</b>
+                    </MudText>
+                </MudDrawerHeader>
+                <MudList>
+                    <MudListItem>
+                        <MudText Typo="Typo.caption">
+                            Informações do Usuário
+                            <MudNavLink Match="NavLinkMatch.All">Alterar Senha</MudNavLink>
+                            <MudNavLink Match="NavLinkMatch.All">Desconectar</MudNavLink>
+                        </MudText>
+                    </MudListItem>
+                </MudList>
+            </MudDrawer>
+
+            <!-- Conteúdo principal da página -->
+            <MudMainContent>
+                <MudContainer Class="mt-4">
+                    @Body
+                </MudContainer>
+            </MudMainContent>
+        </MudLayout>
+    </Authorized>
+    <NotAuthorized>
+        <LoginRedirect />
+    </NotAuthorized>
+</AuthorizeView>
 
 @code {
+    // Controle do Drawer de navegação (menu lateral)
+    private bool _isMenuDrawerOpened = true;
+
+    // Controle do Drawer de informações do usuário
+    private bool _isUserDrawerOpened = false;
+
+    // Controle do modo Dark/Light
     private bool _isDarkMode = true;
+
+    private MudThemeProvider _mudThemeProvider = null!;
+    private Breakpoint _breakpoint = Breakpoint.Sm;
+    private DrawerClipMode _clipModeMenu = DrawerClipMode.Always;
+    private string _searchTerm;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            _isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+    }
+
+    private Task OnSystemPreferenceChanged(bool newValue)
+    {
+        _isDarkMode = newValue;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    // Método para alternar o Drawer de navegação (menu lateral)
+    private void ToggleMenuDrawer()
+    {
+        _isMenuDrawerOpened = !_isMenuDrawerOpened;
+    }
+
+    // Método para alternar o Drawer de informações do usuário
+    private void ToggleUserDrawer()
+    {
+        _isUserDrawerOpened = !_isUserDrawerOpened;
+    }
 }

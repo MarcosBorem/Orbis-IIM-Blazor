@@ -1,0 +1,60 @@
+﻿@page "/documentos"
+@using MudBlazor
+
+<MudLayout>
+    <!-- Menu Lateral (Drawer) -->
+    <MudDrawer Open="true" Width="260px">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">R&C</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu>
+            <MudNavLink Href="#" Icon="@Icons.Material.Filled.Folder" Match="NavLinkMatch.All">Documentos</MudNavLink>
+            <MudNavLink Href="#" Icon="@Icons.Material.Filled.Settings">Configurações</MudNavLink>
+            <!-- Adicione outros links conforme necessário -->
+        </MudNavMenu>
+    </MudDrawer>
+
+    <!-- Conteúdo principal -->
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">Tipos de Documentos</MudText>
+                    <MudText Typo="Typo.body2">Selecione um tipo para filtrar os documentos.</MudText>
+                </MudCardContent>
+            </MudCard>
+
+            <!-- Tabela de Tipos de Documentos -->
+            <MudTable Items="@documento">
+                <HeaderContent>
+                    <MudTh>Tipo de Documento</MudTh>
+                    <MudTh>Total</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>
+                        <MudIcon Icon="@Icons.Material.Filled.Folder" /> @context.Nome
+                    </MudTd>
+                    <MudTd>@context.Total</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    // Classe representando um tipo de documento
+    public class Documento
+    {
+        public string Nome { get; set; }
+        public int Total { get; set; }
+    }
+
+    // Exemplo de lista de documentos
+    private List<Documento> documento = new List<Documento>
+    {
+        new Documento { Nome = "ATA", Total = 406 },
+        new Documento { Nome = "Contrato", Total = 15 },
+        new Documento { Nome = "Contrato AB", Total = 2 },
+        // Adicione outros documentos aqui
+    };
+}

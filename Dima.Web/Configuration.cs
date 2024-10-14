@@ -22,11 +22,11 @@ namespace Dima.Web
                 PrimaryContrastText = new MudColor("#000000"),
                 Secondary = "#01579B",
                 Background = "#D3D3D3",
-                AppbarBackground = new MudColor("#01579B"),
+                AppbarBackground = new MudColor("#ffffff"),
                 AppbarText = Colors.Shades.Black,
                 TextPrimary = Colors.Shades.Black,
                 DrawerText = Colors.Shades.Black,
-                DrawerBackground = "#01579B"
+                DrawerBackground = "#D3D3D3"
             },
 
             PaletteDark = new PaletteDark
@@ -36,11 +36,11 @@ namespace Dima.Web
                 Secondary = "#01579B",
                 Background = "#000000",
                 Surface = "#1c1c1c",
-                AppbarBackground = new MudColor("#01579B"),
+                AppbarBackground = new MudColor("#2d2e2e"),
                 AppbarText = Colors.Shades.White,
                 TextPrimary = Colors.Shades.White,
                 DrawerText = Colors.Shades.White,
-                DrawerBackground = "#01579B"
+                DrawerBackground = "#000000"
             }
         };
     }
