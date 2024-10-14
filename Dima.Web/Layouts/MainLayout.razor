@@ -63,7 +63,8 @@
                             StartIcon="@Icons.Material.Filled.Add"
                             Size="Size.Medium" />
                     <MudNavLink Match="NavLinkMatch.All"
-                                Icon="@Icons.Material.Filled.Article">Acervo</MudNavLink>
+                                Icon="@Icons.Material.Filled.Article"
+                                OnClick="LoadDocuments">Acervo</MudNavLink>
                     <MudNavLink Match="NavLinkMatch.All"
                                 Icon="@Icons.Material.Filled.AdminPanelSettings">Configurações</MudNavLink>
                     <MudNavLink Match="NavLinkMatch.All"
@@ -100,6 +101,24 @@
             <MudMainContent>
                 <MudContainer Class="mt-4">
                     @Body
+                     <!-- Tabela de Tipos de Documentos -->
+                    <MudGrid Justify="Justify.FlexEnd">
+                        <MudItem xs="12" md="20">
+                            <MudTable Items="@documentos">
+                                <HeaderContent>
+                                    <MudTh>Tipo de Documento</MudTh>
+                                    <MudTh>Total</MudTh>
+                                </HeaderContent>
+                                <RowTemplate Context="doc">
+                                    <MudTd Style="display: flex; align-items: center;">
+                                        <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
+                                    </MudTd>
+                                    <MudTd>@doc.Total</MudTd>
+                                </RowTemplate>
+                            </MudTable>
+                        </MudItem>
+                    </MudGrid>
+
                 </MudContainer>
             </MudMainContent>
         </MudLayout>
@@ -124,12 +143,22 @@
     private DrawerClipMode _clipModeMenu = DrawerClipMode.Always;
     private string _searchTerm;
 
+    public class Documento
+    {
+        public string Nome { get; set; }
+        public int Total { get; set; }
+    }
+
+    // Exemplo de lista de documentos
+    private List<Documento> documentos = new List<Documento>();
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             _isDarkMode = await _mudThemeProvider.GetSystemPreference();
             await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            LoadDocuments();
             StateHasChanged();
         }
     }
@@ -152,4 +181,33 @@
     {
         _isUserDrawerOpened = !_isUserDrawerOpened;
     }
+
+    // Método para carregar os documentos ao clicar em "Acervo"
+    private void LoadDocuments()
+    {
+        // Adicione a lógica de carregamento de documentos aqui.
+        // Pode ser uma chamada de API ou uma consulta ao banco de dados.
+        documentos = new List<Documento>
+        {
+            new Documento { Nome = "ATA", Total = 406 },
+            new Documento { Nome = "Contrato", Total = 15 },
+            new Documento { Nome = "Contrato AB", Total = 2 },
+            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
+            new Documento { Nome = "Teste", Total = 1 },
+            new Documento { Nome = "ATA", Total = 406 },
+            new Documento { Nome = "Contrato", Total = 15 },
+            new Documento { Nome = "Contrato AB", Total = 2 },
+            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
+            new Documento { Nome = "Teste", Total = 1 },
+            new Documento { Nome = "ATA", Total = 406 },
+            new Documento { Nome = "Contrato", Total = 15 },
+            new Documento { Nome = "Contrato AB", Total = 2 },
+            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
+            new Documento { Nome = "Teste", Total = 1 },
+            // Outros documentos...
+        };
+
+        StateHasChanged();
+    }
 }
+
