@@ -21,8 +21,6 @@
                      alt="Dima - Controle Financeiro"
                      width="100" />
 
-               
-
                 <!-- Campo de pesquisa -->
                 <MudGrid Justify="Justify.Center">
                     <MudItem xs="12" md="10">
@@ -35,11 +33,9 @@
                     </MudItem>
                 </MudGrid>
 
-               
-
                 <!-- Saudação ao usuário -->
                 <MudText Typo="Typo.caption" Style="margin-right: 6rem;">
-                    <span>Bem vindo, <b>@context.User.Identity?.Name</b></span>
+                   Bem vindo, <b>@context.User.Identity?.Name</b>
                 </MudText>
 
                 <!-- Switch para alternar o tema (dark/light) -->
@@ -54,7 +50,6 @@
                                OnClick="ToggleUserDrawer"
                                Size="Size.Large" />
             </MudAppBar>
-
 
             <!-- Drawer para o menu de navegação -->
             <MudDrawer @bind-Open="_isMenuDrawerOpened"
