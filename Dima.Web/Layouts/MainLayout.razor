@@ -9,22 +9,23 @@
 <AuthorizeView>
     <Authorized>
         <MudLayout>
-            <MudAppBar>
+            <MudAppBar Style="display: flex;">
                 <!-- Botão para abrir o menu lateral -->
                 <MudIconButton Icon="@Icons.Material.Filled.Menu"
                                Color="Color.Inherit"
                                Edge="Edge.Start"
                                OnClick="ToggleMenuDrawer" />
+
                 <!-- Logo -->
                 <img src="imgs/orbis.png"
                      alt="Dima - Controle Financeiro"
                      width="100" />
 
-                <MudSpacer />
+               
 
                 <!-- Campo de pesquisa -->
                 <MudGrid Justify="Justify.Center">
-                    <MudItem xs="12" md="9">
+                    <MudItem xs="12" md="10">
                         <MudTextField @bind-Value="@_searchTerm"
                                       Placeholder="Pesquise"
                                       FullWidth="true"
@@ -34,8 +35,10 @@
                     </MudItem>
                 </MudGrid>
 
+               
+
                 <!-- Saudação ao usuário -->
-                <MudText Typo="Typo.caption" Class="ml-2">
+                <MudText Typo="Typo.caption" Style="margin-right: 6rem;">
                     <span>Bem vindo, <b>@context.User.Identity?.Name</b></span>
                 </MudText>
 
@@ -43,7 +46,6 @@
                 <MudSwitch Color="Color.Inherit"
                            @bind-Value="@_isDarkMode"
                            T="bool"
-                           Class="ml-2"
                            ThumbIcon="@Icons.TwoTone.Lightbulb" />
 
                 <!-- Ícone do usuário para abrir o drawer de informações -->
@@ -52,6 +54,7 @@
                                OnClick="ToggleUserDrawer"
                                Size="Size.Large" />
             </MudAppBar>
+
 
             <!-- Drawer para o menu de navegação -->
             <MudDrawer @bind-Open="_isMenuDrawerOpened"
@@ -92,7 +95,7 @@
                         <MudText Typo="Typo.caption">
                             Informações do Usuário
                             <MudNavLink Match="NavLinkMatch.All">Alterar Senha</MudNavLink>
-                            <MudNavLink Match="NavLinkMatch.All">Desconectar</MudNavLink>
+                            <MudNavLink Match="NavLinkMatch.All" Href="/logout">Desconectar</MudNavLink>
                         </MudText>
                     </MudListItem>
                 </MudList>

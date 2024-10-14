@@ -35,6 +35,7 @@ public partial class LogoutPage : ComponentBase
         }
 
         await base.OnInitializedAsync();
+        NavigationManager.NavigateTo("/login", true);
     }
 
     #endregion
