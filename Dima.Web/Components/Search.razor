@@ -1,0 +1,35 @@
+﻿<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" md="10">
+        <MudTextField @bind-Value="searchTerm"
+                      Placeholder="Pesquise"
+                      FullWidth="true"
+                      Adornment="Adornment.End"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      IconSize="Size.Large"
+                      OnAdornmentClick="OnSearchClicked"
+                      OnKeyUp="HandleKeyUp" />
+    </MudItem>
+</MudGrid>
+
+@code {
+    [Parameter]
+    public string? searchTerm { get; set; }
+
+    [Parameter]
+    public EventCallback<string> valueChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnSearch { get; set; }
+
+    private void OnSearchClicked()
+    {
+        OnSearch.InvokeAsync(searchTerm);
+    }
+    private async Task HandleKeyUp(KeyboardEventArgs args)
+    {
+        if (args.Key == "Enter")
+        {
+            await OnSearch.InvokeAsync(searchTerm);
+        }
+    }
+}

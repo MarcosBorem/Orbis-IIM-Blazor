@@ -1,0 +1,71 @@
+﻿<MudGrid Class="mt-4">
+    <MudItem xs="12">
+        <MudText Typo="Typo.h6">Tipos de Documentos</MudText>
+        <MudText Typo="Typo.subtitle1">Selecione um tipo para filtrar os documentos.</MudText>
+    </MudItem>
+
+    @if (SelectedDocument != null)
+    {
+        <MudItem xs="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Palavras Chaves</MudText>
+
+                    <MudTextField @bind-Value="Filter.StartDate" Label="Data de Início" Type="date" />
+                    <MudTextField @bind-Value="Filter.Object" Label="Objeto" />
+                    <MudTextField @bind-Value="Filter.Year" Label="Ano" />
+                    <div class="d-flex justify-center pt-8">
+                        <MudButton OnClick="OnClearFilters" Color="Color.Inherit">Limpar</MudButton>
+                        <MudButton OnClick="OnSearch" Color="Color.Inherit">Pesquisar</MudButton>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="7">
+            <MudTable T="MainLayout.Documento" Items="@Documentos" OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))" Class="clickable-rows">
+                <HeaderContent>
+                    <MudTh>Tipo de Documento</MudTh>
+                    <MudTh>Total</MudTh>
+                </HeaderContent>
+                <RowTemplate Context="doc">
+                    <MudTd Style="display: flex; align-items: center;">
+                        <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
+                    </MudTd>
+                    <MudTd>@doc.Total</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudItem>
+    }
+    else
+    {
+        <MudItem xs="12">
+            <MudTable T="MainLayout.Documento" Items="@Documentos" OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))" Class="clickable-rows">
+                <HeaderContent>
+                    <MudTh>Tipo de Documento</MudTh>
+                    <MudTh>Total</MudTh>
+                </HeaderContent>
+                <RowTemplate Context="doc">
+                    <MudTd Style="display: flex; align-items: center;">
+                        <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
+                    </MudTd>
+                    <MudTd>@doc.Total</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudItem>
+    }
+</MudGrid>
+
+
+@code {
+    [Parameter] public List<MainLayout.Documento> Documentos { get; set; } = new();
+
+    [Parameter] public EventCallback<MainLayout.Documento> OnRowClick { get; set; }
+
+    [Parameter] public EventCallback OnSearch { get; set; }
+
+    [Parameter] public EventCallback OnClearFilters { get; set; }
+
+    [Parameter] public MainLayout.FilterModel Filter { get; set; } = new();
+
+    [Parameter] public MainLayout.Documento? SelectedDocument { get; set; }
+}

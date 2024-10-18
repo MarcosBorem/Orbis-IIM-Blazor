@@ -9,160 +9,43 @@
 <AuthorizeView>
     <Authorized>
         <MudMainContent>
-            <MudContainer Class="mt-4" MaxWidth="MaxWidth.Large">
+            <MudContainer Class="mt-4" MaxWidth="MaxWidth.ExtraLarge" Style="overflow-x: hidden;">
+                <!-- Evita a rolagem horizontal -->
                 <MudLayout>
-                    <MudAppBar Style="display: flex;">
+                    <MudAppBar Style="display: flex; flex-wrap: wrap;">
+                        <!-- Flex-wrap para ajustar componentes -->
                         <!-- Botão para abrir o menu lateral -->
-                        <MudIconButton Icon="@Icons.Material.Filled.Menu"
-                                       Color="Color.Inherit"
-                                       Edge="Edge.Start"
-                                       OnClick="ToggleMenuDrawer" />
-
-                        <!-- Logo -->
-                        <img src="imgs/orbis.png"
-                             alt="Dima - Controle Financeiro"
-                             width="100" />
-
+                        <MenuButton ToggleMenuDrawer="ToggleMenuDrawer" />
+                        <Logo></Logo>
                         <!-- Campo de pesquisa -->
-                        <MudGrid Justify="Justify.Center">
-                            <MudItem xs="12" md="10">
-                                <MudTextField @bind-Value="@_searchTerm"
-                                              Placeholder="Pesquise"
-                                              FullWidth="true"
-                                              Adornment="Adornment.End"
-                                              AdornmentIcon="@Icons.Material.Filled.Search"
-                                              IconSize="Size.Large" />
-                            </MudItem>
-                        </MudGrid>
-
+                        <Search searchTerm="@_searchTerm" valueChanged="@(value => _searchTerm = value)" OnSearch="PerformSearch" />
                         <!-- Saudação ao usuário -->
-                        <MudText Typo="Typo.caption" Style="margin-right: 6rem;">
-                            Bem vindo, <b>@context.User.Identity?.Name</b>
-                        </MudText>
-
+                        <Usergreeting></Usergreeting>
                         <!-- Switch para alternar o tema (dark/light) -->
                         <MudSwitch Color="Color.Inherit"
                                    @bind-Value="@_isDarkMode"
                                    T="bool"
-                                   ThumbIcon="@Icons.TwoTone.Lightbulb" />
-
+                                   ThumbIcon="@Icons.Material.TwoTone.Lightbulb" />
                         <!-- Ícone do usuário para abrir o drawer de informações -->
-                        <MudIconButton Icon="@Icons.Material.Filled.AccountCircle"
-                                       Color="Color.Inherit"
-                                       OnClick="ToggleUserDrawer"
-                                       Size="Size.Large" />
+                        <UserIcon ToggleUserDrawer="ToggleUserDrawer"></UserIcon>
                     </MudAppBar>
 
                     <!-- Drawer para o menu de navegação -->
-                    <MudDrawer @bind-Open="_isMenuDrawerOpened"
-                               Anchor="Anchor.Start"
-                               ClipMode="_clipModeMenu"
-                               Elevation="1"
-                               Variant="DrawerVariant.Responsive"
-                               Color="Color.Inherit">
-
-                        <MudNavMenu Color="Color.Inherit">
-                            <MudFab Color="Color.Inherit" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" />
-                            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Article" Href="#">Acervo</MudNavLink>
-                            <MudNavGroup Title="Configurações" Icon="@Icons.Material.Filled.AdminPanelSettings" Expanded="false">
-                                <MudNavLink Icon="@Icons.Material.Filled.Person">Usuários</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.Security">Funções</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.List">Listas</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.VpnKey">Palavras Chaves</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.AccessTime">Temporalidades</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.Description">Tipos de Documento</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.Verified">Certificados</MudNavLink>
-                                <MudNavLink Icon="@Icons.Material.Filled.IntegrationInstructions">Integrações </MudNavLink>
-                            </MudNavGroup>
-
-                            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.ManageAccounts">Workflow</MudNavLink>
-                            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.History">Relatórios</MudNavLink>
-                        </MudNavMenu>
-
-                    </MudDrawer>
-
-                    <!-- Drawer para exibir as informações do usuário -->
-                    <MudDrawer @bind-Open="_isUserDrawerOpened"
-                               Anchor="Anchor.End"
-                               Elevation="1"
-                               ClipMode="_clipModeMenu"
-                               Variant="DrawerVariant.Responsive"
-                               Color="Color.Inherit">
-                        <MudDrawerHeader>
-                            <MudText Typo="Typo.subtitle2">
-                                <b>Central de Notificações</b>
-                            </MudText>
-                        </MudDrawerHeader>
-                        <MudList>
-                            <MudListItem>
-                                <MudText Typo="Typo.caption">
-                                    Informações do Usuário
-                                    <MudNavLink Match="NavLinkMatch.All">Alterar Senha</MudNavLink>
-                                    <MudNavLink Match="NavLinkMatch.All" Href="/logout">Desconectar</MudNavLink>
-                                </MudText>
-                            </MudListItem>
-                        </MudList>
-                    </MudDrawer>
+                    <NavMenu MenuDrawerOpened="_isMenuDrawerOpened" clipModeMenu="_clipModeMenu"></NavMenu>
+                    <!-- Drawer para exibir a central de notificações -->
+                    <NotificationCenter isUserDrawerOpened="_isUserDrawerOpened" clipModeMenu="_clipModeMenu"></NotificationCenter>
 
                     <!-- Tabela de Tipos de Documentos -->
-                    @Body
-                    <MudGrid Class="mt-4" Justify="Justify.FlexStart">
-                        @if (selectedDocument != null)
-                        {
-                            <MudItem xs="3">
-                                <MudCard Class="align-left">
-                                    <MudCardContent>
-                                        <MudText Typo="Typo.h6">Palavras Chaves</MudText>
-
-                                        <MudTextField @bind-Value="filter.StartDate" Label="Data de Início" Type="date" />
-                                        <MudTextField @bind-Value="filter.Object" Label="Objeto" />
-                                        <MudTextField @bind-Value="filter.Year" Label="Ano" />
-                                        <div class="d-flex justify-center pt-8">
-                                        <MudButton OnClick="ClearFilters" Color="Color.Inherit">Limpar</MudButton>
-                                            <MudButton OnClick="Search" Color="Color.Inherit">Pesquisar</MudButton>
-                                        </div>
-                                    </MudCardContent>
-                                </MudCard>
-                            </MudItem>
-                            <MudItem xs="9">
-                                <MudTable T="Documento" Items="@documentos" OnRowClick="@(args => ToggleDocument(args))" Class="clickable-rows">
-                                    <HeaderContent>
-                                        <MudTh>Tipo de Documento</MudTh>
-                                        <MudTh>Total</MudTh>
-                                    </HeaderContent>
-                                    <RowTemplate Context="doc">
-                                        <MudTd Style="display: flex; align-items: center;">
-                                            <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
-                                        </MudTd>
-                                        <MudTd>@doc.Total</MudTd>
-                                    </RowTemplate>
-                                </MudTable>
-                            </MudItem>
-                        }
-                        else
-                        {
-                            <MudItem xs="12">
-                                <MudTable T="Documento" Items="@documentos" OnRowClick="@(args => ToggleDocument(args))" Class="clickable-rows">
-                                    <HeaderContent>
-                                        <MudTh>Tipo de Documento</MudTh>
-                                        <MudTh>Total</MudTh>
-                                    </HeaderContent>
-                                    <RowTemplate Context="doc">
-                                        <MudTd Style="display: flex; align-items: center;">
-                                            <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
-                                        </MudTd>
-                                        <MudTd>@doc.Total</MudTd>
-                                    </RowTemplate>
-                                </MudTable>
-                            </MudItem>
-                        }
-                    </MudGrid>
-
+                    <TableDocuments Documentos="@documentos"
+                                    SelectedDocument="@selectedDocument"
+                                    OnRowClick="@(doc => ToggleDocument(doc))"
+                                    OnSearch="Search"
+                                    OnClearFilters="ClearFilters"
+                                    Filter="@filter" />
                 </MudLayout>
-
             </MudContainer>
-
         </MudMainContent>
+
     </Authorized>
     <NotAuthorized>
         <LoginRedirect />

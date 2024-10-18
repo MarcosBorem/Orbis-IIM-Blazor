@@ -1,0 +1,11 @@
+﻿<MudIconButton Icon="@Icons.Material.Filled.AccountCircle"
+               Color="Color.Inherit"
+               OnClick="ToggleUserDrawer"
+               Size="Size.Large" />
+
+               
+@code {
+
+    [Parameter]
+    public EventCallback ToggleUserDrawer { get; set; }
+}

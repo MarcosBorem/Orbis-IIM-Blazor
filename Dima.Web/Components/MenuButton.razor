@@ -1,0 +1,10 @@
+﻿<MudIconButton Icon="@Icons.Material.Filled.Menu"
+               Color="Color.Inherit"
+               Edge="Edge.Start"
+               OnClick="ToggleMenuDrawer" />
+
+
+@code {
+    [Parameter]
+    public EventCallback ToggleMenuDrawer { get; set; }
+}

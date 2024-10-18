@@ -1,0 +1,33 @@
+﻿<MudDrawer @bind-Open="MenuDrawerOpened"
+           Anchor="Anchor.Start"
+           ClipMode="clipModeMenu"
+           Elevation="1"
+           Variant="DrawerVariant.Mini"
+           Color="Color.Inherit">
+    <MudNavMenu Color="Color.Inherit">
+        <MudFab Color="Color.Inherit" StartIcon="@Icons.Material.Filled.Add" Size="Size.Medium" />
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Article" Href="#">Acervo</MudNavLink>
+        <MudNavGroup Title="Configurações" Icon="@Icons.Material.Filled.AdminPanelSettings" Expanded="false">
+            <MudNavLink Icon="@Icons.Material.Filled.Person">Usuários</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Security">Funções</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.List">Listas</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.VpnKey">Palavras Chaves</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.AccessTime">Temporalidades</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Description">Tipos de Documento</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Verified">Certificados</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.IntegrationInstructions">Integrações </MudNavLink>
+        </MudNavGroup>
+
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.ManageAccounts">Workflow</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.History">Relatórios</MudNavLink>
+    </MudNavMenu>
+</MudDrawer>
+
+@code {
+
+    [Parameter]
+    public bool MenuDrawerOpened { get; set; }
+
+    [Parameter]
+    public DrawerClipMode clipModeMenu { get; set; }
+}

@@ -1,0 +1,30 @@
+﻿<MudDrawer @bind-Open="isUserDrawerOpened"
+           Anchor="Anchor.End"
+           Elevation="1"
+           ClipMode="clipModeMenu"
+           Variant="DrawerVariant.Responsive"
+           Color="Color.Inherit">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.subtitle2">
+            <b>Central de Notificações</b>
+        </MudText>
+    </MudDrawerHeader>
+    <MudList T="object">
+        <MudListItem>
+            <MudText Typo="Typo.caption">
+                Informações do Usuário
+                <MudNavLink Match="NavLinkMatch.All">Alterar Senha</MudNavLink>
+                <MudNavLink Match="NavLinkMatch.All" Href="/logout">Desconectar</MudNavLink>
+            </MudText>
+        </MudListItem>
+    </MudList>
+</MudDrawer>
+
+@code {
+
+    [Parameter]
+    public bool isUserDrawerOpened { get; set; }
+
+    [Parameter]
+    public DrawerClipMode clipModeMenu { get; set; }
+}

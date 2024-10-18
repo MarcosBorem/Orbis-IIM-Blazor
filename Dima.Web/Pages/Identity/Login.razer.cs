@@ -74,17 +74,7 @@ public partial class LoginPage : ComponentBase
             IsBusy = false;
         }
     }
-
-    // Propriedade que verifica se ambos os campos estão preenchidos
     public bool CanSubmit => !string.IsNullOrWhiteSpace(InputModel.Email) && !string.IsNullOrWhiteSpace(InputModel.Password);
 
-    //public void SubmitForm()
-    //{
-    //    if (CanSubmit)
-    //    {
-    //        // Lógica para enviar o formulário ou fazer login
-    //        Console.WriteLine("Formulário enviado com sucesso!");
-    //    }
-    //}
     #endregion
 }

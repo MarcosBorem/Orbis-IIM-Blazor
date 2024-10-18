@@ -1,0 +1,24 @@
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<MudText Typo="Typo.caption">
+    Bem vindo, <b>@userName</b>
+</MudText>
+
+@code {
+    private string  ?userName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+
+        if (user.Identity?.IsAuthenticated ?? false)
+        {
+            userName = user.Identity.Name;
+        }
+        else
+        {
+            userName = "";
+        }
+    }
+}

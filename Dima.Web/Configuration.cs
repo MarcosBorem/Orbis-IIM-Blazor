@@ -16,7 +16,7 @@ namespace Dima.Web
                     FontFamily = ["Raleway", "sans-serif"]
                 }
             },
-            Palette = new PaletteLight
+            PaletteLight = new PaletteLight
             {
                 Primary = new MudColor("#01579B"),
                 PrimaryContrastText = new MudColor("#000000"),

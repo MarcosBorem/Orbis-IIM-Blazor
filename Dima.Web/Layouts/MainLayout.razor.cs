@@ -2,61 +2,62 @@
 
 namespace Dima.Web.Layouts
 {
-    public partial class MainLayout 
+    public partial class MainLayout
     {
-        public class FilterModel
-        {
-            public string StartDate { get; set; }
-            public string Object { get; set; }
-            public string Year { get; set; }
-        }
-        private void Search()
+        #region Properties
+
+        public Documento? selectedDocument;
+
+        public bool drawerOpen = false;
+
+        // Controle do Drawer de navegação (menu lateral)
+        public bool _isMenuDrawerOpened = true;
+
+        // Controle do Drawer de configurações
+        public bool _isConfigDrawerOpened = false;
+
+        // Controle do Drawer de informações do usuário
+        public bool _isUserDrawerOpened = false;
+
+        // Controle do modo Dark/Light
+        public bool _isDarkMode = true;
+        
+        public MudThemeProvider _mudThemeProvider = null!;
+
+        public Breakpoint _breakpoint = Breakpoint.Sm;
+
+        public DrawerClipMode _clipModeMenu = DrawerClipMode.Always;
+
+        public string _searchTerm = string.Empty;
+
+        public List<Documento> documentos = new List<Documento>();
+
+        public FilterModel filter = new FilterModel();
+        #endregion
+
+        #region Methods
+
+        public void Search()
         {
             // Implement search logic here...
         }
-        private FilterModel filter = new FilterModel();
-        private void ClearFilters()
+
+        public void ClearFilters()
         {
             filter = new FilterModel();
         }
-        private Documento? selectedDocument;
-        private bool drawerOpen = false;
 
-        private void ToggleDocument(TableRowClickEventArgs<Documento> document)
+        public void ToggleDocument(Documento document)
         {
-            // Se o documento selecionado for o mesmo, ocultamos o MudCard
-            if (selectedDocument == document.Item)
+            if (selectedDocument == document)
             {
                 selectedDocument = null; // Ocultar MudCard
             }
             else
             {
-                selectedDocument = document.Item; // Mostrar MudCard
+                selectedDocument = document; // Mostrar MudCard
             }
         }
-        // Controle do Drawer de navegação (menu lateral)
-        private bool _isMenuDrawerOpened = true;
-        // Controle do Drawer de configurações
-        private bool _isConfigDrawerOpened = false;
-        // Controle do Drawer de informações do usuário
-        private bool _isUserDrawerOpened = false;
-
-        // Controle do modo Dark/Light
-        private bool _isDarkMode = true;
-
-        private MudThemeProvider _mudThemeProvider = null!;
-        private Breakpoint _breakpoint = Breakpoint.Sm;
-        private DrawerClipMode _clipModeMenu = DrawerClipMode.Always;
-        private string _searchTerm;
-
-        public class Documento
-        {
-            public string Nome { get; set; }
-            public int Total { get; set; }
-        }
-
-        // Exemplo de lista de documentos
-        public List<Documento> documentos = new List<Documento>();
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -69,12 +70,12 @@ namespace Dima.Web.Layouts
             }
         }
         // Método para alternar o Drawer de configurações
-        private void ToggleConfigDrawer()
+        public void ToggleConfigDrawer()
         {
             _isConfigDrawerOpened = !_isConfigDrawerOpened;
         }
 
-        private Task OnSystemPreferenceChanged(bool newValue)
+        public Task OnSystemPreferenceChanged(bool newValue)
         {
             _isDarkMode = newValue;
             StateHasChanged();
@@ -82,43 +83,56 @@ namespace Dima.Web.Layouts
         }
 
         // Método para alternar o Drawer de navegação (menu lateral)
-        private void ToggleMenuDrawer()
+        public void ToggleMenuDrawer()
         {
             _isMenuDrawerOpened = !_isMenuDrawerOpened;
         }
 
         // Método para alternar o Drawer de informações do usuário
-        private void ToggleUserDrawer()
+        public void ToggleUserDrawer()
         {
             _isUserDrawerOpened = !_isUserDrawerOpened;
         }
 
         // Método para carregar os documentos ao clicar em "Acervo"
-        private void LoadDocuments()
+        public void LoadDocuments()
         {
-            // Adicione a lógica de carregamento de documentos aqui.
-            // Pode ser uma chamada de API ou uma consulta ao banco de dados.
             documentos = new List<Documento>
-        {
-            new Documento { Nome = "ATA", Total = 406 },
-            new Documento { Nome = "Contrato", Total = 15 },
-            new Documento { Nome = "Contrato AB", Total = 2 },
-            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
-            new Documento { Nome = "Teste", Total = 1 },
-            new Documento { Nome = "ATA", Total = 406 },
-            new Documento { Nome = "Contrato", Total = 15 },
-            new Documento { Nome = "Contrato AB", Total = 2 },
-            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
-            new Documento { Nome = "Teste", Total = 1 },
-            new Documento { Nome = "ATA", Total = 406 },
-            new Documento { Nome = "Contrato", Total = 15 },
-            new Documento { Nome = "Contrato AB", Total = 2 },
-            new Documento { Nome = "Contrato de Locação de Equipamentos", Total = 1 },
-            new Documento { Nome = "Teste", Total = 1 },
-            // Outros documentos...
-        };
+            {
+            new Documento { Id = 2, Nome = "Contrato", Total = 15 },
+            new Documento { Id = 3, Nome = "Contrato AB", Total = 2 },
+            new Documento { Id = 4, Nome = "Contrato de Locação de Equipamentos", Total = 1 },
+            new Documento { Id = 5, Nome = "Teste", Total = 1 },
+            new Documento { Id = 6, Nome = "ATA", Total = 406 },
+            new Documento { Id = 7, Nome = "Contrato", Total = 15 },
+            new Documento { Id = 8, Nome = "Contrato AB", Total = 2 },
+            new Documento { Id = 9, Nome = "Contrato de Locação de Equipamentos", Total = 1 },
+            new Documento { Id = 10, Nome = "Teste", Total = 1 },
+            };
 
             StateHasChanged();
+        }
+
+        public void PerformSearch(string searchTerm)
+        {
+            // Ação a ser realizada ao clicar no ícone de pesquisa
+            Console.WriteLine($"Pesquisando por: {searchTerm}");
+            _searchTerm = searchTerm;
+        }
+
+        #endregion
+        public class FilterModel
+        {
+            public string StartDate { get; set; } = string.Empty;
+            public string Object { get; set; } = string.Empty;
+            public string Year { get; set; } = string.Empty;
+        }
+
+        public class Documento
+        {
+            public int Id { get; set; }
+            public string? Nome { get; set; }
+            public int Total { get; set; }
         }
     }
 }
