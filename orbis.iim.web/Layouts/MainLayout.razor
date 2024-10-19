@@ -9,7 +9,7 @@
 <AuthorizeView>
     <Authorized>
         <MudMainContent>
-            <MudContainer Class="mt-4" MaxWidth="MaxWidth.ExtraLarge" Style="overflow-x: hidden;">
+            <MudContainer Class="mt-4" MaxWidth="MaxWidth.ExtraExtraLarge" Style="overflow-x: hidden;">
                 <!-- Evita a rolagem horizontal -->
                 <MudLayout>
                     <MudAppBar Style="display: flex; flex-wrap: wrap;">
@@ -41,11 +41,11 @@
                                     OnRowClick="@(doc => ToggleDocument(doc))"
                                     OnSearch="Search"
                                     OnClearFilters="ClearFilters"
-                                    Filter="@filter" />
+                                    Filter="@filter"
+                                    _isMenuDrawerOpened="_isMenuDrawerOpened" />
                 </MudLayout>
             </MudContainer>
         </MudMainContent>
-
     </Authorized>
     <NotAuthorized>
         <LoginRedirect />

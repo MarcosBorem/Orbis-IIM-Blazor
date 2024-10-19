@@ -21,34 +21,40 @@
                 </MudCardContent>
             </MudCard>
         </MudItem>
-        <MudItem xs="7">
-            <MudTable T="MainLayout.Documento" Items="@Documentos" OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))" Class="clickable-rows">
+        <MudItem xs="@(_isMenuDrawerOpened ? 7 : 8)">
+            <MudTable T="MainLayout.Documento"
+                      Items="@Documentos"
+                      OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))"
+                      Class="clickable-rows">
                 <HeaderContent>
-                    <MudTh>Tipo de Documento</MudTh>
-                    <MudTh>Total</MudTh>
+                    <MudTh Style="text-align: left;">Tipo de Documento</MudTh>
+                    <MudTh Style="text-align: center;">Total</MudTh>
                 </HeaderContent>
                 <RowTemplate Context="doc">
                     <MudTd Style="display: flex; align-items: center;">
                         <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
                     </MudTd>
-                    <MudTd>@doc.Total</MudTd>
+                    <MudTd Style="text-align: center;">@doc.Total</MudTd>
                 </RowTemplate>
             </MudTable>
         </MudItem>
     }
     else
     {
-        <MudItem xs="12">
-            <MudTable T="MainLayout.Documento" Items="@Documentos" OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))" Class="clickable-rows">
+        <MudItem xs="@(_isMenuDrawerOpened ? 11 : 12)">
+            <MudTable T="MainLayout.Documento"
+                      Items="@Documentos"
+                      OnRowClick="@(args => OnRowClick.InvokeAsync(args.Item))"
+                      Class="clickable-rows">
                 <HeaderContent>
-                    <MudTh>Tipo de Documento</MudTh>
-                    <MudTh>Total</MudTh>
+                    <MudTh Style="text-align: left;">Tipo de Documento</MudTh>
+                    <MudTh Style="text-align: center;">Total</MudTh>
                 </HeaderContent>
                 <RowTemplate Context="doc">
                     <MudTd Style="display: flex; align-items: center;">
                         <MudIcon Icon="@Icons.Material.Outlined.Folder" Style="margin-right: 8px;" /> @doc.Nome
                     </MudTd>
-                    <MudTd>@doc.Total</MudTd>
+                    <MudTd Style="text-align: center;">@doc.Total</MudTd>
                 </RowTemplate>
             </MudTable>
         </MudItem>
@@ -68,4 +74,6 @@
     [Parameter] public MainLayout.FilterModel Filter { get; set; } = new();
 
     [Parameter] public MainLayout.Documento? SelectedDocument { get; set; }
+
+    [Parameter] public bool _isMenuDrawerOpened { get; set; }
 }
