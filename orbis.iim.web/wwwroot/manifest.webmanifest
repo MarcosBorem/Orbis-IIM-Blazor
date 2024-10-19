@@ -1,6 +1,6 @@
 {
-  "name": "Dima.Web",
-  "short_name": "Dima.Web",
+  "name": "orbis.iim.web",
+  "short_name": "orbis.iim.web",
   "id": "./",
   "start_url": "./",
   "display": "standalone",

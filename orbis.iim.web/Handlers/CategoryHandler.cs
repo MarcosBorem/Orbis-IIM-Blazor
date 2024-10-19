@@ -4,7 +4,7 @@ using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
 using Dima.Core.Responses;
 
-namespace Dima.Web.Handlers;
+namespace orbis.iim.web.Handlers;
 
 public class CategoryHandler(IHttpClientFactory httpClientFactory) : ICategoryHandler
 {

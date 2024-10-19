@@ -1,9 +1,9 @@
 using Dima.Core.Handlers;
-using Dima.Web.Security;
+using orbis.iim.web.Security;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Dima.Web.Pages.Identity;
+namespace orbis.iim.web.Pages.Identity;
 
 public partial class LogoutPage : ComponentBase
 {

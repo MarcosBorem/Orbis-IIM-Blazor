@@ -1,14 +1,14 @@
-﻿using Dima.Core.Handlers;
+using Dima.Core.Handlers;
 using Dima.Core.Requests.Account;
-using Dima.Web.Security;
+using orbis.iim.web.Security;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
-namespace Dima.Web.Pages.Identity;
+namespace orbis.iim.web.Pages.Identity;
 
-public partial class LoginPage : ComponentBase
+public partial class RegisterPage : ComponentBase
 {
-    #region Services
+    #region Dependencies
 
     [Inject]
     public ISnackbar Snackbar { get; set; } = null!;
@@ -27,9 +27,7 @@ public partial class LoginPage : ComponentBase
     #region Properties
 
     public bool IsBusy { get; set; } = false;
-    public LoginRequest InputModel { get; set; } = new();
-
-    public MudForm? _mudForm;
+    public RegisterRequest InputModel { get; set; } = new();
 
     #endregion
 
@@ -54,13 +52,12 @@ public partial class LoginPage : ComponentBase
 
         try
         {
-            var result = await Handler.LoginAsync(InputModel);
+            var result = await Handler.RegisterAsync(InputModel);
 
             if (result.IsSuccess)
             {
-                await AuthenticationStateProvider.GetAuthenticationStateAsync();
-                AuthenticationStateProvider.NotifyAuthenticationStateChanged();
-                NavigationManager.NavigateTo("/");
+                Snackbar.Add(result.Message, Severity.Success);
+                NavigationManager.NavigateTo("/login");
             }
             else
                 Snackbar.Add(result.Message, Severity.Error);
@@ -74,7 +71,6 @@ public partial class LoginPage : ComponentBase
             IsBusy = false;
         }
     }
-    public bool CanSubmit => !string.IsNullOrWhiteSpace(InputModel.Email) && !string.IsNullOrWhiteSpace(InputModel.Password);
 
     #endregion
 }

@@ -1,6 +1,6 @@
 ﻿using MudBlazor;
 
-namespace Dima.Web.Layouts
+namespace orbis.iim.web.Layouts
 {
     public partial class MainLayout
     {

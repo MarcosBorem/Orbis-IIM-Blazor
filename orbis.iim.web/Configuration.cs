@@ -1,7 +1,7 @@
 ﻿using MudBlazor;
 using MudBlazor.Utilities;
 
-namespace Dima.Web
+namespace orbis.iim.web
 {
     public static class Configuration
     {

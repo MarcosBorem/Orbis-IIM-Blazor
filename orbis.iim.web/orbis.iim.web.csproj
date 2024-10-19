@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dima.Core\Dima.Core.csproj" />
+    <ProjectReference Include="..\orbis.iim.core\orbis.iim.core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

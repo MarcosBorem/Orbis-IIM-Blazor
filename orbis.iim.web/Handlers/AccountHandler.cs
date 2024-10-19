@@ -4,7 +4,7 @@ using Dima.Core.Handlers;
 using Dima.Core.Requests.Account;
 using Dima.Core.Responses;
 
-namespace Dima.Web.Handlers;
+namespace orbis.iim.web.Handlers;
 
 public class AccountHandler(IHttpClientFactory httpClientFactory) : IAccountHandler
 {

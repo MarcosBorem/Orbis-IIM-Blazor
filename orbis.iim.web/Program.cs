@@ -1,7 +1,7 @@
 using Dima.Core.Handlers;
-using Dima.Web;
-using Dima.Web.Handlers;
-using Dima.Web.Security;
+using orbis.iim.web;
+using orbis.iim.web.Handlers;
+using orbis.iim.web.Security;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
