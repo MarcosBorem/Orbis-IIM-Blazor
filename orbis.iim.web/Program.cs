@@ -1,11 +1,11 @@
 using Dima.Core.Handlers;
-using orbis.iim.web;
-using orbis.iim.web.Handlers;
-using orbis.iim.web.Security;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
+using orbis.iim.web;
+using orbis.iim.web.Handlers;
+using orbis.iim.web.Security;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

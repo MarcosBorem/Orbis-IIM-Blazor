@@ -1,7 +1,7 @@
-using System.Net.Http.Json;
-using System.Security.Claims;
 using Dima.Core.Models.Account;
 using Microsoft.AspNetCore.Components.Authorization;
+using System.Net.Http.Json;
+using System.Security.Claims;
 
 namespace orbis.iim.web.Security;
 
@@ -34,7 +34,7 @@ public class CookieAuthenticationStateProvider(IHttpClientFactory clientFactory)
 
         var id = new ClaimsIdentity(claims, nameof(CookieAuthenticationStateProvider));
         user = new ClaimsPrincipal(id);
-        
+
         _isAuthenticated = true;
         return new AuthenticationState(user);
     }
@@ -63,7 +63,7 @@ public class CookieAuthenticationStateProvider(IHttpClientFactory clientFactory)
             user.Claims.Where(x =>
                     x.Key != ClaimTypes.Name &&
                     x.Key != ClaimTypes.Email)
-                .Select(x 
+                .Select(x
                     => new Claim(x.Key, x.Value))
         );
 
@@ -76,7 +76,7 @@ public class CookieAuthenticationStateProvider(IHttpClientFactory clientFactory)
         {
             return claims;
         }
-        
+
         foreach (var role in roles ?? [])
             if (!string.IsNullOrEmpty(role.Type) && !string.IsNullOrEmpty(role.Value))
                 claims.Add(new Claim(role.Type, role.Value, role.ValueType, role.Issuer, role.OriginalIssuer));

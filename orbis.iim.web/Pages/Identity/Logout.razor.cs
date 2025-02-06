@@ -1,7 +1,7 @@
 using Dima.Core.Handlers;
-using orbis.iim.web.Security;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using orbis.iim.web.Security;
 
 namespace orbis.iim.web.Pages.Identity;
 
@@ -22,7 +22,7 @@ public partial class LogoutPage : ComponentBase
     public ICookieAuthenticationStateProvider AuthenticationStateProvider { get; set; } = null!;
 
     #endregion
-    
+
     #region Overrides
 
     protected override async Task OnInitializedAsync()

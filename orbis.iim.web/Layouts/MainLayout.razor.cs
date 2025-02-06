@@ -21,7 +21,7 @@ namespace orbis.iim.web.Layouts
 
         // Controle do modo Dark/Light
         public bool _isDarkMode = true;
-        
+
         public MudThemeProvider _mudThemeProvider = null!;
 
         public Breakpoint _breakpoint = Breakpoint.Sm;
