@@ -1,4 +1,4 @@
-namespace Dima.Core.Models.Account;
+namespace orbis.iim.core.Models.Account;
 
 public class User
 {

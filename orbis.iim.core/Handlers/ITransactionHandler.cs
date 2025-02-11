@@ -1,8 +1,8 @@
-using Dima.Core.Models;
-using Dima.Core.Requests.Transactions;
-using Dima.Core.Responses;
+using orbis.iim.core.Models;
+using orbis.iim.core.Requests.Transactions;
+using orbis.iim.core.Responses;
 
-namespace Dima.Core.Handlers;
+namespace orbis.iim.core.Handlers;
 
 public interface ITransactionHandler
 {

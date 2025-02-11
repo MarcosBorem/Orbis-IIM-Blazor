@@ -1,4 +1,4 @@
-﻿namespace Dima.Core.Models
+﻿namespace orbis.iim.core.Models
 {
     public class Category
     {

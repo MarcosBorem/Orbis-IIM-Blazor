@@ -1,7 +1,7 @@
-using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
+using orbis.iim.core.Handlers;
+using orbis.iim.core.Models;
+using orbis.iim.core.Requests.Categories;
+using orbis.iim.core.Responses;
 using System.Net.Http.Json;
 
 namespace orbis.iim.web.Handlers;

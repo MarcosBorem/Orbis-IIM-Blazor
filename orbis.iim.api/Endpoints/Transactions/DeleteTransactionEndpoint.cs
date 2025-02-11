@@ -1,11 +1,11 @@
-using Dima.Api.Common.Api;
-using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Transactions;
-using Dima.Core.Responses;
+using orbis.iim.api.Common.Api;
+using orbis.iim.core.Handlers;
+using orbis.iim.core.Models;
+using orbis.iim.core.Requests.Transactions;
+using orbis.iim.core.Responses;
 using System.Security.Claims;
 
-namespace Dima.Api.Endpoints.Transactions;
+namespace orbis.iim.api.Endpoints.Transactions;
 
 public class DeleteTransactionEndpoint : IEndpoint
 {

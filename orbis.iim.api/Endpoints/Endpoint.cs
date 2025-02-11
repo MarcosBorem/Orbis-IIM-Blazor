@@ -1,10 +1,10 @@
-﻿using Dima.Api.Common.Api;
-using Dima.Api.Endpoints.Categories;
-using Dima.Api.Endpoints.Identity;
-using Dima.Api.Endpoints.Transactions;
-using Dima.Api.Models;
+﻿using orbis.iim.api.Common.Api;
+using orbis.iim.api.Endpoints.Categories;
+using orbis.iim.api.Endpoints.Identity;
+using orbis.iim.api.Endpoints.Transactions;
+using orbis.iim.api.Models;
 
-namespace Dima.Api.Endpoints
+namespace orbis.iim.api.Endpoints
 {
     public static class Endpoint
     {

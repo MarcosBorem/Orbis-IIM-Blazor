@@ -1,4 +1,4 @@
-namespace Dima.Core.Requests.Transactions;
+namespace orbis.iim.core.Requests.Transactions;
 
 public class GetTransactionsByPeriodRequest : PagedRequest
 {

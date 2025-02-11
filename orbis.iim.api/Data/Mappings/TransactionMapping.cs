@@ -1,8 +1,8 @@
-﻿using Dima.Core.Models;
+﻿using orbis.iim.core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Dima.Api.Data.Mappings
+namespace orbis.iim.api.Data.Mappings
 {
     public class TransactionMapping : IEntityTypeConfiguration<Transaction>
     {

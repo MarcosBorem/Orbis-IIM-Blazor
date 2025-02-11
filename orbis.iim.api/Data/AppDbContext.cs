@@ -1,14 +1,13 @@
-﻿using Dima.Api.Models;
-using Dima.Core.Models;
+﻿using orbis.iim.core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace Dima.Api.Data
+namespace orbis.iim.api.Data
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options)
-    : IdentityDbContext<User,
+    : IdentityDbContext<Models.User,
         IdentityRole<long>,
         long,
         IdentityUserClaim<long>,

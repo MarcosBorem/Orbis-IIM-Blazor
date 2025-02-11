@@ -1,13 +1,13 @@
-﻿using Dima.Api.Common.Api;
-using Dima.Core;
-using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
+﻿using orbis.iim.api.Common.Api;
+using orbis.iim.core.Handlers;
+using orbis.iim.core.Models;
+using orbis.iim.core.Requests.Categories;
 using Microsoft.AspNetCore.Mvc;
+using orbis.iim.core;
+using orbis.iim.core.Responses;
 using System.Security.Claims;
 
-namespace Dima.Api.Endpoints.Categories;
+namespace orbis.iim.api.Endpoints.Categories;
 
 public class GetAllCategoriesEndpoint : IEndpoint
 {

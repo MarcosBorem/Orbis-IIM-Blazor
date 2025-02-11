@@ -1,11 +1,11 @@
-﻿using Dima.Api.Data;
-using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
+﻿using orbis.iim.api.Data;
+using orbis.iim.core.Handlers;
+using orbis.iim.core.Models;
 using Microsoft.EntityFrameworkCore;
+using orbis.iim.core.Requests.Categories;
+using orbis.iim.core.Responses;
 
-namespace Dima.Api.Handlers;
+namespace orbis.iim.api.Handlers;
 
 public class CategoryHandler(AppDbContext context) : ICategoryHandler
 {

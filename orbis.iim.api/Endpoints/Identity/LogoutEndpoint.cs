@@ -1,8 +1,8 @@
-using Dima.Api.Common.Api;
-using Dima.Api.Models;
+using orbis.iim.api.Common.Api;
+using orbis.iim.api.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace Dima.Api.Endpoints.Identity;
+namespace orbis.iim.api.Endpoints.Identity;
 
 public class LogoutEndpoint : IEndpoint
 {

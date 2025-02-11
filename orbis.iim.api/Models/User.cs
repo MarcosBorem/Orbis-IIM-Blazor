@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Dima.Api.Models;
+namespace orbis.iim.api.Models;
 
 public class User : IdentityUser<long>
 {

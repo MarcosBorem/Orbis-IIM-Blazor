@@ -1,4 +1,4 @@
-namespace Dima.Core.Common.Extensions;
+namespace orbis.iim.core.Common.Extensions;
 
 public static class DateTimeExtension
 {

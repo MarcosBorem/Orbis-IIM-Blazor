@@ -1,4 +1,4 @@
-namespace Dima.Api;
+namespace orbis.iim.api;
 
 public static class ApiConfiguration
 {

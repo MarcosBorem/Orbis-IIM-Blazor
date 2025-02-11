@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Dima.Core.Requests.Account;
+namespace orbis.iim.core.Requests.Account;
 
 public class LoginRequest : Request
 {

@@ -1,4 +1,4 @@
-﻿namespace Dima.Core;
+﻿namespace orbis.iim.core;
 
 public static class Configuration
 {

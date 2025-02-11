@@ -1,6 +1,6 @@
-﻿using Dima.Core.Enums;
+﻿using orbis.iim.core.Enums;
 
-namespace Dima.Core.Models
+namespace orbis.iim.core.Models
 {
     public class Transaction
     {

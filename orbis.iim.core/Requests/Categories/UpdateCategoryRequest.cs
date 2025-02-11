@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Dima.Core.Requests.Categories;
+namespace orbis.iim.core.Requests.Categories;
 
 public class UpdateCategoryRequest : Request
 {

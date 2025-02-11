@@ -1,4 +1,4 @@
-namespace Dima.Api.Common.Api;
+namespace orbis.iim.api.Common.Api;
 
 public static class AppExtension
 {

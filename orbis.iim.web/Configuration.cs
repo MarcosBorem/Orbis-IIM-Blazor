@@ -5,7 +5,8 @@ namespace orbis.iim.web
 {
     public static class Configuration
     {
-        public const string HttpClientName = "dima";
+        //public const string HttpClientName = "dima";
+        public const string HttpClientName = "orbis-iim";
         public static string BackendUrl { get; set; } = "http://localhost:5164";
         public static MudTheme Theme = new()
         {

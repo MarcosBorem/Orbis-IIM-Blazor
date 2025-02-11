@@ -1,6 +1,6 @@
-using Dima.Core.Handlers;
-using Dima.Core.Requests.Account;
-using Dima.Core.Responses;
+using orbis.iim.core.Handlers;
+using orbis.iim.core.Requests.Account;
+using orbis.iim.core.Responses;
 using System.Net.Http.Json;
 using System.Text;
 

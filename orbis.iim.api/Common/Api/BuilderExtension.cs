@@ -1,12 +1,12 @@
-using Dima.Api.Data;
-using Dima.Api.Handlers;
-using Dima.Api.Models;
-using Dima.Core;
-using Dima.Core.Handlers;
+using orbis.iim.api.Data;
+using orbis.iim.api.Handlers;
+using orbis.iim.api.Models;
+using orbis.iim.core.Handlers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using orbis.iim.core;
 
-namespace Dima.Api.Common.Api;
+namespace orbis.iim.api.Common.Api;
 
 public static class BuilderExtension
 {

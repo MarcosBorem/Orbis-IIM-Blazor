@@ -1,4 +1,4 @@
-using Dima.Core.Handlers;
+using orbis.iim.core.Handlers;
 using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using orbis.iim.web.Security;

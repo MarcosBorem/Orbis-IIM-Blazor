@@ -1,5 +1,5 @@
-using Dima.Core.Models.Account;
 using Microsoft.AspNetCore.Components.Authorization;
+using orbis.iim.core.Models.Account;
 using System.Net.Http.Json;
 using System.Security.Claims;
 

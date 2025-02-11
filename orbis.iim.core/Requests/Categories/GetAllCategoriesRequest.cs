@@ -1,4 +1,4 @@
-﻿namespace Dima.Core.Requests.Categories;
+﻿namespace orbis.iim.core.Requests.Categories;
 
 public class GetAllCategoriesRequest : PagedRequest
 {

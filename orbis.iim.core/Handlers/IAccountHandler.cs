@@ -1,7 +1,7 @@
-using Dima.Core.Requests.Account;
-using Dima.Core.Responses;
+using orbis.iim.core.Requests.Account;
+using orbis.iim.core.Responses;
 
-namespace Dima.Core.Handlers;
+namespace orbis.iim.core.Handlers;
 
 public interface IAccountHandler
 {

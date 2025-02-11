@@ -1,7 +1,7 @@
-using Dima.Core.Enums;
+using orbis.iim.core.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace Dima.Core.Requests.Transactions;
+namespace orbis.iim.core.Requests.Transactions;
 
 public class UpdateTransactionRequest : Request
 {

@@ -1,8 +1,8 @@
-using Dima.Api.Common.Api;
-using Dima.Core.Models.Account;
+using orbis.iim.api.Common.Api;
+using orbis.iim.core.Models.Account;
 using System.Security.Claims;
 
-namespace Dima.Api.Endpoints.Identity;
+namespace orbis.iim.api.Endpoints.Identity;
 
 public class GetRolesEndpoint : IEndpoint
 {

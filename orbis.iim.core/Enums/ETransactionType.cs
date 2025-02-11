@@ -1,4 +1,4 @@
-﻿namespace Dima.Core.Enums
+﻿namespace orbis.iim.core.Enums
 {
     public enum ETransactionType
     {

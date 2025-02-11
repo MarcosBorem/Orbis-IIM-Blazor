@@ -1,4 +1,4 @@
-﻿namespace Dima.Core.Requests;
+﻿namespace orbis.iim.core.Requests;
 
 public abstract class Request
 {

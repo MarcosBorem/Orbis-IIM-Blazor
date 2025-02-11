@@ -1,8 +1,8 @@
-﻿using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
+﻿using orbis.iim.core.Models;
+using orbis.iim.core.Requests.Categories;
+using orbis.iim.core.Responses;
 
-namespace Dima.Core.Handlers
+namespace orbis.iim.core.Handlers
 {
     public interface ICategoryHandler
     {

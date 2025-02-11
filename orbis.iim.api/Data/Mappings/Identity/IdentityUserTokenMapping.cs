@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Dima.Api.Data.Mappings.Identity;
+namespace orbis.iim.api.Data.Mappings.Identity;
 
 public class IdentityUserTokenMapping
     : IEntityTypeConfiguration<IdentityUserToken<long>>

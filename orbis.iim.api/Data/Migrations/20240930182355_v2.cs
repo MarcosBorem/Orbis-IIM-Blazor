@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Dima.Api.Migrations
+namespace orbis.iim.api.Migrations
 {
     /// <inheritdoc />
     public partial class v2 : Migration
