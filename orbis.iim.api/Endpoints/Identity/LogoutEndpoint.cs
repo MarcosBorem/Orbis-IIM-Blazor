@@ -1,6 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using orbis.iim.api.Common.Api;
 using orbis.iim.api.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace orbis.iim.api.Endpoints.Identity;
 

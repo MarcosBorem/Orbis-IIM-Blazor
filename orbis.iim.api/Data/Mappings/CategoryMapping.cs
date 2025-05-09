@@ -1,6 +1,6 @@
-﻿using orbis.iim.core.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using orbis.iim.core.Models;
 
 namespace orbis.iim.api.Data.Mappings
 {

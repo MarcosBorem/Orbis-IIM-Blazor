@@ -1,7 +1,6 @@
+using orbis.iim.api;
 using orbis.iim.api.Common.Api;
 using orbis.iim.api.Endpoints;
-using orbis.iim.api.Common.Api;
-using orbis.iim.api;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddConfiguration();

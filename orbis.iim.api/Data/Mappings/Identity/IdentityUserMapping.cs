@@ -1,7 +1,7 @@
-using orbis.iim.api.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using orbis.iim.api.Models;
 
 namespace orbis.iim.api.Data.Mappings.Identity;
 

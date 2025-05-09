@@ -1,7 +1,7 @@
-﻿using orbis.iim.core.Models;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using orbis.iim.core.Models;
 using System.Reflection;
 
 namespace orbis.iim.api.Data
